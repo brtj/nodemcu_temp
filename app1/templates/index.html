@@ -187,6 +187,9 @@ $(document).ready(function()
 			}
 		},
 		rangeSelector: {
+			buttonPosition: {
+				align: 'center',
+			},
 			buttons: [{
 				count: 30,
 				type: 'minute',
@@ -217,9 +220,11 @@ $(document).ready(function()
 			}],
 			inputEnabled: true,
 			selected: 2,
+			verticalAlign: 'top',
 			buttonTheme: {
 			r: 1,
-			width: 75,
+			width: 80,
+			height: 40,
 			style: {
 	    			color: 'black',
 	    			fontWeight: 'bold'
@@ -416,6 +421,17 @@ function loadChannelHistory(sentChannelIndex,channelNumber,key,sentFieldList,sen
 
   </script>
     <title>Pomiary - Mieszkanie</title>
+	<style>
+div.temp   {
+	color: black;
+	font-size: 64px;
+	font-weight: bold;
+	}
+div.humu	{
+	color: black;
+	font-size: 32px;
+	}
+</style>
   </head>
   <body style="background-color: white;">
   <div class="container">
@@ -423,29 +439,29 @@ function loadChannelHistory(sentChannelIndex,channelNumber,key,sentFieldList,sen
     <div class="col-sm">
       <h4 class="uppercase text-center">OUTSIDE</h4>
 	  <div class="text-center">
-		<div class="degree color-red" id="" style="font-size: 32px;">°C</div>
-		<div class="degree color-red" id="" style="font-size: 16px;">%rh</div>
+		<div class="temp" id="">0 °C</div>
+		<div class="humu" id="">0 %rh</div>
 			</div>
 	  </div>
     <div class="col-sm">
       <h4 class="uppercase text-center">KITCHEN</h4>
 	  <div class="text-center">
-		<div class="degree color-red" id="temp_kuchnia" style="font-size: 32px;">°C</div>
-		<div class="degree color-red" id="hum_kuchnia" style="font-size: 16px;">%rh</div>
+		<div class="temp" id="temp_kuchnia">0 °C</div>
+		<div class="humu" id="hum_kuchnia">0 %rh</div>
 			</div>
     </div>
     <div class="col-sm">
       <h4 class="uppercase text-center">ROOM</h4>
 	  <div class="text-center">
-		<div class="degree color-red" id="temp_salon" style="font-size: 32px;">°C</div>
-		<div class="degree color-red" id="hum_salon" style="font-size: 16px;">%rh</div>
+		<div class="temp" id="temp_salon">0 °C</div>
+		<div class="humu" id="hum_salon">0 %rh</div>
 			</div>
 	  </div>
 	<div class="col-sm">
       <h4 class="uppercase text-center">BATHROOM</h4>
 	  <div class="text-center">
-		<div class="degree color-red" id="" style="font-size: 32px;">°C</div>
-		<div class="degree color-red" id="" style="font-size: 16px;">%rh</div>
+		<div class="temp" id="">0 °C</div>
+		<div class="humu" id="">0 %rh</div>
 			</div>
 	  </div>
   </div>
