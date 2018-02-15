@@ -1,0 +1,9 @@
+*.xls
+*.xlsx
+*.txt
+*.pyc
+__pycache__
+myvenv
+wirtualka
+db.sqlite3
+.DS_Store
