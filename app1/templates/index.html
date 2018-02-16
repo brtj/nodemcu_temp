@@ -20,9 +20,11 @@ var dynamicChart;
 var channelsLoaded = 0;
 
 var channelKeys =[];
-channelKeys.push({channelNumber:424974, name:'Kitchen',key:'0UEYH30JG0QYZYJQ',
+channelKeys.push({channelNumber:424974, name:'Kuchnia',key:'0UEYH30JG0QYZYJQ',
                   fieldList:[{field:1,axis:'O'},{field:2,axis:'T'}]});
 channelKeys.push({channelNumber:426855, name:'Pokój z balkonem',key:'1104KKVTVCGTSLJ0',
+   fieldList:[{field:1,axis:'O'},{field:2,axis:'T'}]});
+channelKeys.push({channelNumber:427770, name:'Łazienka',key:'7M0C6YR8NTI938K5',
    fieldList:[{field:1,axis:'O'},{field:2,axis:'T'}]});
   
 // user's timezone offset
@@ -460,8 +462,8 @@ div.humu	{
 	<div class="col">
       <h4 class="uppercase text-center">BATHROOM</h4>
 	  <div class="text-center">
-		<div class="temp" id="">0 °C</div>
-		<div class="humu" id="">0 %rh</div>
+		<div class="temp" id="temp_lazienka">0 °C</div>
+		<div class="humu" id="hum_lazienka">0 %rh</div>
 			</div>
 	  </div>
   </div>
@@ -539,6 +541,32 @@ $(document).ready(function(){
     		});	
     }, 30000);
 });
-</script>
+$(document).ready(function(){
+	$.ajaxSetup({ cache: false });
+	$.getJSON('https://api.thingspeak.com/channels/427770/fields/1/last?key=7M0C6YR8NTI938K5', function(data) {
+        	console.log('Temperature in KUCHNIA: ' + data)
+        	$('#temp_lazienka').html(data + ' °C');
+	});
+	setInterval(function() {
+    	$.getJSON('https://api.thingspeak.com/channels/427770/fields/1/last?key=7M0C6YR8NTI938K5', function(data) {
+        	console.log('Temperature in KUCHNIA' + data)
+        	$('#temp_lazienka').html(data + ' °C');
+    		});	
+    }, 30000);
+});
+$(document).ready(function(){
+	$.ajaxSetup({ cache: false });
+	$.getJSON('https://api.thingspeak.com/channels/427770/fields/2/last?key=7M0C6YR8NTI938K5', function(data) {
+        	console.log('Humudity in ŁAZIENKA: ' + data)
+        	$('#hum_lazienka').html(data + ' %rh');
+	});
+	setInterval(function() {
+    	$.getJSON('https://api.thingspeak.com/channels/427770/fields/2/last?key=7M0C6YR8NTI938K5', function(data) {
+        	console.log('Humudity in ŁAZIENKA' + data)
+        	$('#hum_lazienka').html(data + ' %rh');
+    		});	
+    }, 30000);
+});
+</script> 
   </body>
 </html>
