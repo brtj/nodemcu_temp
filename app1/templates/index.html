@@ -258,7 +258,7 @@ $(document).ready(function()
     tooltip: {
       valueDecimals: 1,
       valueSuffix: '',
-      xDateFormat:'%Y-%m-%d<br/>%1:%M:%S %p'
+      xDateFormat:'%d-%m-%Y<br/>%H:%M:%S'
 			// reformat the tooltips so that local times are displayed
 			//formatter: function() {
       //var d = new Date(this.x + (myOffset*60000));
@@ -271,8 +271,8 @@ $(document).ready(function()
       ordinal:false,
       min: Date.UTC(2013,02,28),
 			dateTimeLabelFormats : {
-        hour: '%l %p',
-        minute: '%l:%M %p'
+        hour: '%H:%M',
+        minute: '%l:%M'
       },
       title: {
         text: 'test'
@@ -280,7 +280,7 @@ $(document).ready(function()
 		},
 		yAxis: [{
             title: {
-                text: 'Humudity'
+                text: 'Humudity %rh'
             },
 			opposite: false,
             id: 'T'
