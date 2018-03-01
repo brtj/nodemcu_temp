@@ -26,6 +26,8 @@ channelKeys.push({channelNumber:426855, name:'Pokój z balkonem',key:'1104KKVTVC
    fieldList:[{field:1,axis:'O'},{field:2,axis:'T'}]});
 channelKeys.push({channelNumber:427770, name:'Łazienka',key:'7M0C6YR8NTI938K5',
    fieldList:[{field:1,axis:'O'},{field:2,axis:'T'}]});
+channelKeys.push({channelNumber:437677, name:'Na zewnątrz',key:'R7R1YUX5NZBP4804',
+   fieldList:[{field:1,axis:'O'},{field:2,axis:'T'}]});
   
 // user's timezone offset
 var myOffset = new Date().getTimezoneOffset();
@@ -441,8 +443,8 @@ div.humu	{
     <div class="col">
       <h4 class="uppercase text-center">OUTSIDE</h4>
 	  <div class="text-center">
-		<div class="temp" id="">0 °C</div>
-		<div class="humu" id="">0 %rh</div>
+		<div class="temp" id="temp_out">0 °C</div>
+		<div class="humu" id="hum_out">0 %rh</div>
 			</div>
 	  </div>
     <div class="col">
@@ -564,6 +566,32 @@ $(document).ready(function(){
     	$.getJSON('https://api.thingspeak.com/channels/427770/fields/2/last?key=7M0C6YR8NTI938K5', function(data) {
         	console.log('Humudity in ŁAZIENKA' + data)
         	$('#hum_lazienka').html(data + ' %rh');
+    		});	
+    }, 30000);
+});
+$(document).ready(function(){
+	$.ajaxSetup({ cache: false });
+	$.getJSON('https://api.thingspeak.com/channels/437677/fields/1/last?key=R7R1YUX5NZBP4804', function(data) {
+        	console.log('Temperature in OUTSIDE: ' + data)
+        	$('#temp_out').html(data + ' °C');
+	});
+	setInterval(function() {
+    	$.getJSON('https://api.thingspeak.com/channels/437677/fields/1/last?key=R7R1YUX5NZBP4804', function(data) {
+        	console.log('Temperature in OUTSIDE' + data)
+        	$('#temp_out').html(data + ' °C');
+    		});	
+    }, 30000);
+});
+$(document).ready(function(){
+	$.ajaxSetup({ cache: false });
+	$.getJSON('https://api.thingspeak.com/channels/437677/fields/2/last?key=R7R1YUX5NZBP4804', function(data) {
+        	console.log('Humudity in OUTSIDE: ' + data)
+        	$('#hum_out').html(data + ' %rh');
+	});
+	setInterval(function() {
+    	$.getJSON('https://api.thingspeak.com/channels/437677/fields/2/last?key=R7R1YUX5NZBP4804', function(data) {
+        	console.log('Humudity in OUTSIDE' + data)
+        	$('#hum_out').html(data + ' %rh');
     		});	
     }, 30000);
 });
